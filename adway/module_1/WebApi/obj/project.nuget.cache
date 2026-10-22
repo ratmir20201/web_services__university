@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lQXad0GL0pQ=",
+  "dgSpecHash": "tbrdl8TQTZg=",
   "success": true,
-  "projectFilePath": "c:\\Users\\ratmi\\OneDrive\\Desktop\\web_services__university\\web_services__university\\adway\\module_1\\WebApi\\WebApi.csproj",
+  "projectFilePath": "C:\\Users\\ratmi\\OneDrive\\Desktop\\web_services__university\\web_services__university\\adway\\module_1\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ratmi\\.nuget\\packages\\automapper\\16.2.0\\automapper.16.2.0.nupkg.sha512",
     "C:\\Users\\ratmi\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

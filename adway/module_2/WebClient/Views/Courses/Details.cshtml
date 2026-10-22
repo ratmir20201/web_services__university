@@ -1,0 +1,36 @@
+@model CourseDetailsViewModel
+@{
+    ViewData["Title"] = "Курс";
+}
+
+<p><a asp-action="Index" asp-route-version="@Model.Version">← К списку курсов</a></p>
+
+<partial name="_ApiError" model="Model.ErrorMessage" />
+
+@if (Model.CourseV1 != null)
+{
+    <h1>@Model.CourseV1.Name <span class="badge">API v1</span></h1>
+    <dl class="details">
+        <dt>ID</dt><dd>@Model.CourseV1.Id</dd>
+        <dt>Описание</dt><dd>@Model.CourseV1.Description</dd>
+        <dt>Кредиты</dt><dd>@Model.CourseV1.Credits</dd>
+        <dt>ID преподавателя</dt><dd>@Model.CourseV1.TeacherId</dd>
+        <dt>Создан</dt><dd>@Model.CourseV1.CreatedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</dd>
+    </dl>
+    <a asp-action="Details" asp-route-id="@Model.CourseV1.Id" asp-route-version="2">Открыть в API v2</a>
+}
+
+@if (Model.CourseV2 != null)
+{
+    <h1>@Model.CourseV2.Name <span class="badge">API v2</span></h1>
+    <dl class="details">
+        <dt>ID</dt><dd>@Model.CourseV2.Id</dd>
+        <dt>Описание</dt><dd>@Model.CourseV2.Description</dd>
+        <dt>Кредиты</dt><dd>@Model.CourseV2.Credits</dd>
+        <dt>Преподаватель</dt><dd>@(Model.CourseV2.Teacher?.FullName ?? "не назначен")</dd>
+        <dt>Кафедра</dt><dd>@(Model.CourseV2.Teacher?.Department ?? "—")</dd>
+        <dt>Записано студентов</dt><dd>@Model.CourseV2.EnrolledStudentsCount</dd>
+        <dt>Создан</dt><dd>@Model.CourseV2.CreatedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</dd>
+    </dl>
+    <a asp-action="Details" asp-route-id="@Model.CourseV2.Id" asp-route-version="1">Открыть в API v1</a>
+}

@@ -1,0 +1,27 @@
+@baseUrl = https://localhost:7009
+@token = paste-access-token-here
+
+GET {{baseUrl}}/api/v1/courses
+Accept: application/json
+
+###
+
+GET {{baseUrl}}/api/v2/courses
+Accept: application/json
+
+###
+
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "userName": "admin",
+  "password": "Passw0rd!"
+}
+
+###
+
+GET {{baseUrl}}/api/auth/me
+Authorization: Bearer {{token}}
+
+###

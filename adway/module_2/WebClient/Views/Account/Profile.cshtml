@@ -1,0 +1,37 @@
+@model ProfileViewModel
+@{
+    ViewData["Title"] = "Профиль";
+}
+
+<h1>Профиль</h1>
+
+<partial name="_ApiError" model="Model.ErrorMessage" />
+
+@if (Model.Profile != null)
+{
+    <dl class="details">
+        <dt>Пользователь</dt><dd>@Model.Profile.UserName</dd>
+        <dt>Email</dt><dd>@Model.Profile.Email</dd>
+        <dt>Роли</dt><dd>@string.Join(", ", Model.Profile.Roles)</dd>
+        <dt>ID студента</dt><dd>@(Model.Profile.StudentId?.ToString() ?? "—")</dd>
+        <dt>ID преподавателя</dt><dd>@(Model.Profile.TeacherId?.ToString() ?? "—")</dd>
+    </dl>
+
+    @if (Model.Profile.StudentId != null)
+    {
+        <h2>Мои курсы и оценки</h2>
+        @if (Model.Grades.Count == 0)
+        {
+            <p>Записей на курсы нет.</p>
+        }
+        else
+        {
+            <ul class="plain">
+                @foreach (var grade in Model.Grades)
+                {
+                    <li>@grade.CourseName — оценка: @(grade.Grade?.ToString() ?? "нет")</li>
+                }
+            </ul>
+        }
+    }
+}

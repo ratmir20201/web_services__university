@@ -1,0 +1,41 @@
+@model BrowserDemoViewModel
+@{
+    ViewData["Title"] = "CORS-демо";
+}
+
+<h1>CORS-демо</h1>
+<p>Эта страница запрашивает курсы напрямую из браузера через fetch. Запрос проходит только потому, что адрес клиента указан в CORS-политике API.</p>
+<p class="muted">Адрес API: <span id="api-url"></span></p>
+
+<div id="status" class="muted">Загрузка...</div>
+<ul id="courses" class="plain"></ul>
+
+@section Scripts {
+    <script>
+        const apiBaseUrl = @Json.Serialize(Model.ApiBaseUrl);
+        const statusElement = document.getElementById('status');
+        const listElement = document.getElementById('courses');
+        document.getElementById('api-url').textContent = apiBaseUrl;
+
+        fetch(new URL('api/v2/courses', apiBaseUrl))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('API вернул код ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                statusElement.textContent = 'Получено курсов: ' + data.result.length;
+                data.result.forEach(course => {
+                    const item = document.createElement('li');
+                    const teacher = course.teacher ? course.teacher.fullName : 'не назначен';
+                    item.textContent = course.name + ' — ' + teacher + ', студентов: ' + course.enrolledStudentsCount;
+                    listElement.appendChild(item);
+                });
+            })
+            .catch(error => {
+                statusElement.textContent = 'Запрос не выполнен: ' + error.message + '. Возможно, API недоступен или origin не разрешен CORS-политикой.';
+                statusElement.className = 'alert';
+            });
+    </script>
+}

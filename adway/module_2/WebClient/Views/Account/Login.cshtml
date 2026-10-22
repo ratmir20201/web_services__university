@@ -1,0 +1,24 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Вход";
+}
+
+<h1>Вход</h1>
+
+@if (TempData["Message"] is string message)
+{
+    <div class="alert">@message</div>
+}
+
+<form asp-action="Login" method="post" class="form">
+    <div asp-validation-summary="ModelOnly" class="alert-list"></div>
+    <label asp-for="UserName">Имя пользователя</label>
+    <input asp-for="UserName" autocomplete="username" />
+    <span asp-validation-for="UserName" class="field-error"></span>
+
+    <label asp-for="Password">Пароль</label>
+    <input asp-for="Password" autocomplete="current-password" />
+    <span asp-validation-for="Password" class="field-error"></span>
+
+    <button type="submit">Войти</button>
+</form>

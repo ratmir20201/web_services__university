@@ -1,0 +1,37 @@
+@{
+    var userName = Context.Session.GetString("UserName");
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - University Client</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" asp-controller="Courses" asp-action="Index">University Client</a>
+        <nav>
+            <a asp-controller="Courses" asp-action="Index" asp-route-version="2">Курсы v2</a>
+            <a asp-controller="Courses" asp-action="Index" asp-route-version="1">Курсы v1</a>
+            <a asp-controller="Courses" asp-action="Browser">CORS-демо</a>
+            @if (string.IsNullOrEmpty(userName))
+            {
+                <a asp-controller="Account" asp-action="Login">Войти</a>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Profile">@userName</a>
+                <form asp-controller="Account" asp-action="Logout" method="post" class="inline">
+                    <button type="submit" class="link">Выйти</button>
+                </form>
+            }
+        </nav>
+    </header>
+    <main class="container">
+        @RenderBody()
+    </main>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

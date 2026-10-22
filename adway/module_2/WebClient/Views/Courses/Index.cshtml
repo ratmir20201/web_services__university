@@ -1,0 +1,51 @@
+@model CoursesIndexViewModel
+@{
+    ViewData["Title"] = "Курсы";
+}
+
+<h1>Курсы <span class="badge">API v@(Model.Version)</span></h1>
+
+<form method="get" class="search">
+    <input type="hidden" name="version" value="@Model.Version" />
+    <input type="text" name="search" value="@Model.Search" placeholder="Поиск по названию или описанию" />
+    <button type="submit">Найти</button>
+</form>
+
+<partial name="_ApiError" model="Model.ErrorMessage" />
+
+@if (Model.Version == 1)
+{
+    @if (Model.CoursesV1.Count == 0 && Model.ErrorMessage == null)
+    {
+        <p>Курсы не найдены.</p>
+    }
+    <div class="cards">
+        @foreach (var course in Model.CoursesV1)
+        {
+            <a class="card" asp-action="Details" asp-route-id="@course.Id" asp-route-version="1">
+                <h3>@course.Name</h3>
+                <p>@course.Description</p>
+                <p class="muted">Кредиты: @course.Credits · ID преподавателя: @course.TeacherId</p>
+            </a>
+        }
+    </div>
+}
+else
+{
+    @if (Model.CoursesV2.Count == 0 && Model.ErrorMessage == null)
+    {
+        <p>Курсы не найдены.</p>
+    }
+    <div class="cards">
+        @foreach (var course in Model.CoursesV2)
+        {
+            <a class="card" asp-action="Details" asp-route-id="@course.Id" asp-route-version="2">
+                <h3>@course.Name</h3>
+                <p>@course.Description</p>
+                <p class="muted">Кредиты: @course.Credits</p>
+                <p class="muted">Преподаватель: @(course.Teacher?.FullName ?? "не назначен")</p>
+                <p class="muted">Записано студентов: @course.EnrolledStudentsCount</p>
+            </a>
+        }
+    </div>
+}

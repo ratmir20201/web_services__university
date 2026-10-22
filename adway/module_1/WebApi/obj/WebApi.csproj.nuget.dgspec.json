@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\ratmi\\OneDrive\\Desktop\\web_services__university\\web_services__university\\adway\\module_1\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\ratmi\\OneDrive\\Desktop\\web_services__university\\web_services__university\\adway\\module_1\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "c:\\Users\\ratmi\\OneDrive\\Desktop\\web_services__university\\web_services__university\\adway\\module_1\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\ratmi\\OneDrive\\Desktop\\web_services__university\\web_services__university\\adway\\module_1\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\ratmi\\OneDrive\\Desktop\\web_services__university\\web_services__university\\adway\\module_1\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\ratmi\\OneDrive\\Desktop\\web_services__university\\web_services__university\\adway\\module_1\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "c:\\Users\\ratmi\\OneDrive\\Desktop\\web_services__university\\web_services__university\\adway\\module_1\\WebApi\\WebApi.csproj",
+        "projectPath": "C:\\Users\\ratmi\\OneDrive\\Desktop\\web_services__university\\web_services__university\\adway\\module_1\\WebApi\\WebApi.csproj",
         "packagesPath": "C:\\Users\\ratmi\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\ratmi\\OneDrive\\Desktop\\web_services__university\\web_services__university\\adway\\module_1\\WebApi\\obj\\",
+        "outputPath": "C:\\Users\\ratmi\\OneDrive\\Desktop\\web_services__university\\web_services__university\\adway\\module_1\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ratmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
